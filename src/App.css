@@ -22,6 +22,59 @@
   color: #61dafb;
 }
 
+.Form {
+  font-size: 10pt;
+  float: right;
+  text-align: left;
+  border-radius: 10px;
+  height: 350px;
+  width: 300px;
+  padding: 10px;
+  background-color: #3ad866;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Form img {
+  border: 1px ridge gray;
+  border-radius: 5px;
+
+  height: 150px;
+  width: 240px;
+  margin: 5px 30px;
+}
+.Form input {
+  width: auto;
+}
+.Form .button-area {
+  margin: 0px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Form button {
+  font-size: 8pt;
+  background-color: #ed6b5a;
+  border: 0px;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.Dashboard {
+  float: ;
+}
+
+.Product {
+  float: left;
+  margin: 10px;
+  width: 120px;
+
+  border: 3px ridge black;
+}
+.Product img {
+  width: 100px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,25 +1,61 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import axios from "axios";
+
+import logo from "./logo.svg";
+import "./App.css";
+
+//Local Imports
+import Dashboard from "./component/Dashboard/Dashboard";
+import Form from "./component/Form/Form";
+import Header from "./component/Header/Header";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      products: []
+    };
+
+    // this.getA = this.getA.bind(this);
+    this.getALL = this.getALL.bind(this);
+  }
+
+  // componentWillUpdate() {
+  //   this.getA();
+  // }
+
+  //GET
+  getALL() {
+    axios.get(`/api/products`).then(response => {
+      // console.log(typeof response.data);
+      this.setState({ products: response.data });
+      console.log("componentDidMount() GET: " + response.data[0]);
+    });
+  }
+
+  componentWillMount() {
+    this.getALL();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state != prevState) {
+      this.forceUpdate();
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+
+        <Header />
+        <Dashboard
+          products={this.state.products}
+          className="Dashboard"
+          getALL={this.getALL}
+        />
+        {/* <Form url={this.state.url} className="Form" getALL={this.getALL} /> */}
       </div>
     );
   }
